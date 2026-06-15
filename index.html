@@ -153,16 +153,16 @@
 <script>
 const questions = [
   {
-    q: "密室開始後，你的第一直覺是什麼？",
+    q: "進入密室後，你第一件事會做什麼？",
     opts: [
       { text: "快速掃視整個空間，確認出口與道具分佈", role: "leader" },
-      { text: "立刻翻抽屜、掀地毯，找出藏起來的東西", role: "scout" },
+      { text: "立刻翻找抽屜、掀開地毯等，看有沒有藏起來的東西", role: "scout" },
       { text: "走向最陰暗的角落，看看裡面有什麼", role: "tank" },
-      { text: "仔細盯著牆上的文字與圖案，思考其規律", role: "brain" }
+      { text: "仔細盯著牆上的說明文字與圖案，思考其規律", role: "brain" }
     ]
   },
   {
-    q: "朋友說房間裡有個密道，但你需要一個人先進去探查，你會？",
+    q: "你的夥伴發現了密道，但需要一個人先進去探查，你會怎麼反應？",
     opts: [
       { text: "沒問題，我來。（已在走進去了）", role: "tank" },
       { text: "我先確認一下哪個人進去效益最高再說", role: "leader" },
@@ -233,6 +233,51 @@ const questions = [
       { text: "不糾結了，直接按對講機問工作人員，過關比較重要", role: "diplomat" }
     ]
   },
+{
+  q: "當密室中的燈光突然變暗，背景音效開始變得詭異時，你最在意的是？",
+  opts: [
+    { text: "先穩定大家情緒，避免有人影響解謎節奏", role: "leader" },
+    { text: "觀察這些聲光效果是否隱藏線索或規律", role: "brain" },
+    { text: "趁大家分心時，快速掃描周圍有沒有新出現的道具", role: "scout" },
+    { text: "氣氛越強越好，我想立刻往前探索看看", role: "tank" }
+  ]
+},
+{
+  q: "你發現牆上有一句話：「真正的答案永遠在謊言之中。」旁邊有兩個按鈕，一個標示『真』，一個標示『假』。你的第一反應是？",
+  opts: [
+    { text: "分析這句話的邏輯結構，思考是否存在自我矛盾", role: "brain" },
+    { text: "先請大家整理目前相關線索，再決定怎麼操作", role: "leader" },
+    { text: "重新搜索附近，看有沒有更多提示能驗證這句話", role: "scout" },
+    { text: "先按一個試試看，觀察機關反應再說", role: "tank" }
+  ]
+},
+{
+  q: "你們發出求救，小天使只說了一句：「有個地方你們還沒仔細看過。」你的第一反應是？",
+  opts: [
+    { text: "重新檢查每個角落、抽屜、夾層與裝飾細節", role: "scout" },
+    { text: "回想所有已取得的線索是否有被誤解", role: "brain" },
+    { text: "請大家回報各自搜查過哪些區域，重新分工", role: "leader" },
+    { text: "直接去剛剛最可疑但沒人敢碰的地方看看", role: "tank" }
+  ]
+},
+{
+  q: "全隊手上共有7條線索，但彼此意見完全不同。這時你最自然會做什麼？",
+  opts: [
+    { text: "先把所有線索集中整理，建立共同資訊庫", role: "leader" },
+    { text: "獨自研究線索之間的邏輯關係與可能答案", role: "brain" },
+    { text: "去找更多缺失的線索，資訊可能還不完整", role: "scout" },
+    { text: "挑一個最有機會的方向直接嘗試", role: "tank" }
+  ]
+},
+{
+  q: "時間剩下不多了，有隊友突然情緒崩潰說：「我們絕對出不去了！」你會怎麼辦？",
+  opts: [
+    { text: "先安撫他的情緒，再帶大家重新整理目前進度", role: "leader" },
+    { text: "冷靜分析目前卡住的原因，找出最值得突破的地方", role: "brain" },
+    { text: "給他一個簡單任務，例如幫忙找特定線索，讓他重新投入", role: "scout" },
+    { text: "拍拍他說『還沒結束啦！』然後帶頭繼續往前推進", role: "tank" }
+  ]
+},
   {
     q: "如果可以為隊伍選一個能力加成，你希望是什麼？",
     opts: [
@@ -285,10 +330,10 @@ const roles = {
     tips: ["🔢 遇到密碼鎖先觀察周邊，找提示線索再輸入","🧩 把所有線索集中在一個地方排列比對","💡 卡關超過5分鐘就換個角度，或換人試試"]
   },
   scout: {
-    name: "🐹 機動搜索手・倉鼠", emoji: "🐹",
+    name: "🦅 鷹眼・線索獵人", emoji: "🦅",
     badge: { bg: "#fef0d0", color: "#633806", text: "行動思考型" },
     barColor: "#BA7517",
-    desc: "你像一隻敏銳的倉鼠，沒有任何暗格、夾縫或隱藏道具能逃過你的眼睛。你的地毯式搜索是全隊道具庫的命脈，也是解謎的重要後盾。",
+    desc: "你像一隻敏銳的老鷹，沒有任何暗格、夾縫或隱藏道具能逃過你的眼睛。你的敏銳觀察力是全隊找到關鍵線索的最大依靠，也是解謎的重要後盾。",
     traits: [
       { label: "核心職責", val: "搜索暗格・收集道具" },
       { label: "關鍵時機", val: "開場・缺少道具時" },
@@ -344,7 +389,7 @@ function renderIntro() {
         <span class="chip" style="background:#ddeeff;color:#0C447C">🧭 隊長</span>
         <span class="chip" style="background:#fde8e0;color:#993C1D">🛡 坦克</span>
         <span class="chip" style="background:#e6f5d0;color:#3B6D11">🧠 智囊</span>
-        <span class="chip" style="background:#fef0d0;color:#633806">🐹 搜索手</span>
+        <span class="chip" style="background:#fef0d0;color:#633806">🦅 鷹眼</span>
         <span class="chip" style="background:#eeedfe;color:#3C3489">📡 外交官</span>
       </div>
       <button class="btn primary" onclick="startQuiz()" style="padding:13px 44px;font-size:15px;border-radius:12px;">開始測驗 →</button>
@@ -377,7 +422,7 @@ function renderResult() {
     {label:'隊長', key:'leader', color:'#378ADD'},
     {label:'坦克', key:'tank', color:'#D85A30'},
     {label:'智囊', key:'brain', color:'#639922'},
-    {label:'搜索手', key:'scout', color:'#BA7517'},
+    {label:'鷹眼', key:'scout', color:'#BA7517'},
     {label:'外交官', key:'diplomat', color:'#7F77DD'}
   ];
   return `

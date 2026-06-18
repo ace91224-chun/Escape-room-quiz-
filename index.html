@@ -97,7 +97,7 @@
 
   .bar-group { margin-bottom: 1.5rem; }
   .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .bar-name { font-size: 13px; color: #666; width: 58px; flex-shrink: 0; }
+  .bar-name { font-size: 13px; color: #666; width: 68px; flex-shrink: 0; }
   .bar-track { flex: 1; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 4px; transition: width 0.7s ease; }
   .bar-pct { font-size: 12px; color: #aaa; width: 30px; text-align: right; }
@@ -158,7 +158,8 @@ const questions = [
       { text: "快速掃視整個空間，確認出口與道具分佈", role: "leader" },
       { text: "立刻四處翻找，看有沒有藏起來的東西", role: "scout" },
       { text: "走向最陰暗的角落，看看裡面有什麼", role: "tank" },
-      { text: "仔細盯著牆上的說明文字與圖案，思考規律", role: "brain" }
+      { text: "仔細盯著牆上的說明文字與圖案，思考規律", role: "brain" },
+      { text: "看著密室的佈景，跟大家說好有沉浸感喔", role: "joker" }
     ]
   },
   {
@@ -167,124 +168,138 @@ const questions = [
       { text: "沒問題，我來。（已經走進去了）", role: "tank" },
       { text: "等一下，我想想要讓誰進去會比較適合", role: "leader" },
       { text: "我會在入口附近負責接應，搜集周圍線索", role: "scout" },
-      { text: "你去吧，我在外面分析它和其他線索的關聯", role: "brain" }
+      { text: "你去吧，我在外面分析它和其他線索的關聯", role: "brain" },
+      { text: "我可以進去！……但能不能有人陪我？", role: "hamster" }
     ]
   },
   {
     q: "你們找到一個密碼鎖，旁邊有一堆數字與符號，你最有可能做什麼？",
     opts: [
-      { text: "馬上開始拼湊組合，試著找出規律", role: "brain" },
-      { text: "叫最擅長的人來，自己繼續搜查其他地方", role: "scout" },
-      { text: "問一下大家有沒有發現其他地方的相關線索", role: "leader" },
-      { text: "先試幾個我覺得可能的組合，不行再說", role: "tank" }
+      { text: "立刻開始分析線索，試著找出其中的規律", role: "brain" },
+      { text: "交給擅長解謎的人處理，自己先去搜尋其他線索", role: "scout" },
+      { text: "先詢問大家有沒有發現相關資訊，再一起推理", role: "leader" },
+      { text: "先憑直覺試幾組可能的密碼，不行再換方法", role: "tank" },
+      { text: "先在旁邊觀察情況，偶爾講個冷笑話舒緩氣氛", role: "joker" }
     ]
   },
   {
     q: "距離結束只剩15分鐘，還有3個謎題沒解，這時你？",
     opts: [
-      { text: "馬上分配任務，一人負責一題衝到底", role: "leader" },
-      { text: "把所有還沒檢查過的角落和道具再搜一次", role: "scout" },
-      { text: "鎖定最關鍵的難題，先集中火力突破", role: "brain" },
-      { text: "果斷向小天使(工作人員)求救，換個思路拿提示", role: "diplomat" }
+      { text: "馬上指揮大家分工，能解幾題算幾題", role: "leader" },
+      { text: "把還沒仔細搜過的角落和道具再檢查一遍", role: "scout" },
+      { text: "挑出最核心的謎題，專心破解它", role: "brain" },
+      { text: "先活絡一下氣氛，免得大家越急越亂", role: "joker" },
+      { text: "開始懷疑人生，但還是硬著頭皮跟著大家衝", role: "hamster" }
     ]
   },
   {
     q: "你在密室中最享受的時刻是？",
     opts: [
-      { text: "發現一個大家都沒注意到的隱藏暗格", role: "scout" },
+      { text: "發現一個大家都忽略的隱藏機關或暗格", role: "scout" },
       { text: "把七零八碎的線索串聯在一起時的豁然開朗", role: "brain" },
-      { text: "在最緊張的時刻讓大家保持冷靜、整頓方向", role: "leader" },
-      { text: "第一個踏入黑暗空間時腎上腺素飆升的感覺", role: "tank" }
+      { text: "大家陷入混亂時，我能讓團隊重新回到正軌", role: "leader" },
+      { text: "踏入未知空間、心跳加速的刺激感", role: "tank" },
+      { text: "明明很緊張，卻因為大家一起尖叫大笑而玩得超開心", role: "hamster" }
     ]
   },
   {
     q: "你按下一個神秘機關後，房間突然傳來『喀啦』一聲，你會？",
     opts: [
       { text: "再試幾次，確認聲音和機關之間的規律", role: "brain" },
-      { text: "直接動手繼續操作，看看會不會觸發新機關", role: "tank" },
+      { text: "直接繼續操作，看看會不會觸發新機關", role: "tank" },
       { text: "先記下位置和反應，再去找其他相關線索", role: "scout" },
-      { text: "立刻通知隊友，確認其他區域有沒有對應變化", role: "leader" }
+      { text: "立刻通知隊友，確認其他地方有沒有變化", role: "leader" },
+      { text: "嚇一跳後故作鎮定：「這…應該是正常的吧？」", role: "hamster" }
     ]
   },
   {
     q: "恐怖主題密室裡，NPC（演員）突然靠近你們，你會？",
     opts: [
-      { text: "冷靜說「沒關係，繼續推進」，穩住全隊", role: "leader" },
-      { text: "往前一步吸引它注意，讓隊友有空間行動", role: "tank" },
-      { text: "趁亂觀察NPC出現的地方有沒有道具可以拿", role: "scout" },
-      { text: "腦子一片空白，總之先逃再說吧", role: "diplomat" }
+      { text: "先穩住大家：「別慌，繼續解謎！」", role: "leader" },
+      { text: "主動吸引注意力，幫隊友爭取時間", role: "tank" },
+      { text: "趁亂觀察附近有沒有新的線索或道具", role: "scout" },
+      { text: "發出全場最高分貝尖叫，意外成為氣氛擔當", role: "hamster" },
+      { text: "一邊尖叫一邊笑著說：「剛剛那聲不是我啦！」", role: "joker" }
     ]
   },
   {
     q: "你最常被朋友稱讚的特質是？",
     opts: [
-      { text: "有膽量、不怕事", role: "tank" },
-      { text: "觀察細膩、找東西超厲害", role: "scout" },
+      { text: "有膽量、遇事不退縮", role: "tank" },
+      { text: "觀察細膩，總能發現別人忽略的細節", role: "scout" },
       { text: "遇到混亂時，總能讓事情變得有條理", role: "leader" },
-      { text: "冷靜理性、思路清晰", role: "brain" }
+      { text: "冷靜理性，總能快速找到問題核心", role: "brain" },
+      { text: "幽默風趣、自帶讓大家放鬆的歡樂氣場", role: "joker" }
     ]
   },
   {
     q: "全隊卡在同一個謎題超過10分鐘，毫無進展，你覺得？",
     opts: [
-      { text: "這很正常，繼續找，靈感總會來的", role: "brain" },
-      { text: "先去把沒搜完的地方掃一遍，說不定有新線索", role: "scout" },
-      { text: "評估一下還剩多少時間，決定是否調整策略", role: "leader" },
-      { text: "直接打開對講機向小天使(工作人員)求救", role: "diplomat" }
+      { text: "別急，答案一定藏在線索裡，再想想看", role: "brain" },
+      { text: "先把沒仔細搜過的地方再翻一遍", role: "scout" },
+      { text: "先看剩下多少時間，再決定要不要換策略", role: "leader" },
+      { text: "講個幹話打破沉默，讓大家重新開機", role: "joker" },
+      { text: "默默開始打算等等出去要吃什麼安慰自己", role: "hamster" }
     ]
   },
 {
   q: "當密室中的燈光突然變暗，背景音效開始變得詭異時，你的反應會是？",
   opts: [
-    { text: "先確認大家狀況，別讓緊張影響團隊節奏", role: "leader" },
-    { text: "這些變化可能暗藏提示，我想先找出規律", role: "brain" },
-    { text: "趁機重新掃視四周，說不定有新的線索出現", role: "scout" },
-    { text: "終於進入重頭戲了，我已經準備好往前衝了", role: "tank" }
+    { text: "先穩住大家，不要讓節奏被嚇亂", role: "leader" },
+    { text: "這些變化一定有意義，我想找出規律", role: "brain" },
+    { text: "重新掃視四周，說不定有新的線索出現", role: "scout" },
+    { text: "終於進入重頭戲了，我已經準備好往前衝了", role: "tank" },
+    { text: "觀察大家當下的反應，跟著音效一起起鬨", role: "joker" }
   ]
 },
 {
   q: "你發現牆上有一句話：「真正的答案永遠在謊言之中。」旁邊有兩個按鈕，一個標示『真』，一個標示『假』。你會？",
   opts: [
-    { text: "分析這句話的邏輯結構，思考是否存在自我矛盾", role: "brain" },
-    { text: "先請大家整理目前相關線索，再決定怎麼操作", role: "leader" },
-    { text: "重新搜索附近，看有沒有更多提示能驗證這句話", role: "scout" },
-    { text: "先按一個試試看，觀察機關反應再說", role: "tank" }
+    { text: "先分析這句話的邏輯，看有沒有陷阱", role: "brain" },
+    { text: "先集合大家的線索，再決定怎麼按按鈕", role: "leader" },
+    { text: "看看附近還有沒有其他提示能驗證這道題", role: "scout" },
+    { text: "先按一個再說，反正總會有反應", role: "tank" },
+    { text: "開始哲學思考並且念出來，把全隊逗笑了", role: "joker" }
   ]
 },
 {
-  q: "你們發出求救，小天使只說了一句：「有個地方你們還沒仔細看過。」你會？",
+  q: "你們發出求救，小天使只說：「有個地方你們還沒仔細看過。」你會？",
   opts: [
     { text: "重新搜索每個角落，不放過任何細節", role: "scout" },
     { text: "檢視已取得線索，看看是否忽略了某個關鍵訊息", role: "brain" },
     { text: "先確認哪些區域已經搜過，再安排大家重新分工", role: "leader" },
-    { text: "直接去最可疑、但大家一直不敢碰的地方看看", role: "tank" }
+    { text: "直接去最可疑、但大家一直不敢碰的地方看看", role: "tank" },
+    { text: "指著最陰暗的角落說：「應該是那邊…你們加油。」", role: "hamster" }
   ]
 },
 {
   q: "全隊手上共有7條線索，但彼此意見完全不同。這時你會做什麼？",
   opts: [
-    { text: "讓大家把發現的資訊攤開來，一起重新整理", role: "leader" },
-    { text: "專心研究線索背後的邏輯，找出真正的關鍵", role: "brain" },
-    { text: "回頭檢查現場，看看是不是還有被忽略的細節", role: "scout" },
-    { text: "與其一直討論，不如先驗證其中一個方向", role: "tank" }
+    { text: "把所有資訊攤開來，重新整理一次", role: "leader" },
+    { text: "專心研究線索之間的關聯性", role: "brain" },
+    { text: "回頭檢查現場，可能還有漏掉的東西", role: "scout" },
+    { text: "與其一直討論，不如先試一個方向", role: "tank" },
+    { text: "先讓大家笑一下，腦袋重開比較重要", role: "joker" }
   ]
 },
 {
-  q: "時間剩下不多，有隊友突然情緒崩潰說：「我們絕對出不去了！」你會怎麼辦？",
+  q: "時間不多了，隊友崩潰喊：「我們絕對出不去了！」你會？",
   opts: [
-    { text: "先安撫他的情緒，再帶大家重新整理目前進度", role: "leader" },
-    { text: "冷靜分析目前卡住的原因，找出最值得突破的地方", role: "brain" },
-    { text: "給他一個簡單任務，例如幫忙找特定線索，讓他重新投入", role: "scout" },
-    { text: "拍拍他說『還沒結束啦！』然後帶頭繼續往前推進", role: "tank" }
+    { text: "先安撫大家，再重新整理進度", role: "leader" },
+    { text: "分析卡關原因，找出最值得突破的地方", role: "brain" },
+    { text: "給他一個簡單任務，讓他重新投入", role: "scout" },
+    { text: "拍拍他：「還沒結束啦！」然後繼續往前衝進", role: "tank" },
+    { text: "跟著一起崩潰三秒鐘，然後笑著繼續", role: "joker" }
   ]
 },
   {
     q: "如果可以為隊伍選一個能力加成，你希望是什麼？",
     opts: [
-      { text: "全員更快看懂謎題背後的邏輯", role: "brain" },
-      { text: "全員更容易發現隱藏線索與機關", role: "scout" },
-      { text: "全員面對恐怖與未知時都能保持勇氣", role: "tank" },
-      { text: "全員能即時共享資訊並維持最佳節奏", role: "leader" }
+      { text: "看懂謎題邏輯的速度 +100%", role: "brain" },
+      { text: "發現隱藏機關的機率大幅提升", role: "scout" },
+      { text: "面對恐怖場景時勇氣值不下降", role: "tank" },
+      { text: "資訊共享效率滿點，合作無間", role: "leader" },
+      { text: "再崩潰也能笑著撐到最後", role: "joker" }
     ]
   }
 ];
@@ -342,23 +357,37 @@ const roles = {
     ],
     tips: ["🔍 開場前5分鐘優先完成全場地毯式搜索","📦 找到道具立刻大聲告知隊友，讓智囊判斷用途","🗂 記住每樣道具位置，方便之後快速取用"]
   },
-  diplomat: {
-    name: "📡 外交官・提示索取者", emoji: "📡",
-    badge: { bg: "#eeedfe", color: "#3C3489", text: "務實型" },
-    barColor: "#7F77DD",
-    desc: "你務實、不糾結，深知「過關」才是密室的終極目標。當全隊陷入無效循環，你會果斷拿起對講機，用清晰的表達向工作人員取得提示，讓隊伍重新上路。",
+  hamster: {
+    name: "🐹 倉鼠・膽小擔當", emoji: "🐹",
+    badge: { bg: "#fde8f5", color: "#8C2563", text: "娛樂型" },
+    barColor: "#C9509A",
+    desc: "你天生對驚嚇超級敏感，在恐怖或微恐主題密室裡，你是全場反應最大的那個人。不過別小看自己——你的每一聲尖叫都是隊友最好的解壓神器，讓大家在緊繃中大笑，反而凝聚了全隊情緒。",
     traits: [
-      { label: "核心職責", val: "索取提示・打破僵局" },
-      { label: "關鍵時機", val: "卡關逾10分鐘・時間緊迫" },
-      { label: "最佳拍檔", val: "隊長・智囊" },
-      { label: "弱點提醒", val: "拿捏時機，別太早放棄嘗試" }
+      { label: "核心職責", val: "提供歡樂・凝聚隊友情緒" },
+      { label: "關鍵時機", val: "NPC出沒・恐怖演出時刻" },
+      { label: "最佳拍檔", val: "坦克（幫你擋在前面）" },
+      { label: "弱點提醒", val: "尖叫完記得繼續解謎，別愣太久" }
     ],
-    tips: ["📡 卡關超過10分鐘且無新進展時，果斷出手","🗣 向工作人員說明卡在哪個環節，描述越清楚提示越有用","⏳ 索取提示後立刻讓智囊接手，不要在對講機前耗太多時間"]
+    tips: ["🐹 讓最有膽量的隊友幫你擋在前面，安心跟著走","😂 接受自己的反應，你的驚嚇表情是全隊的快樂來源","💪 解謎時專注在道具和線索，恐怖元素只是佈景，不是真的"]
+  },
+  joker: {
+    name: "🌰 開心果・氣氛擔當", emoji: "🌰",
+    badge: { bg: "#fff8e0", color: "#7A5800", text: "氣氛型" },
+    barColor: "#E0A800",
+    desc: "你是全隊的潤滑劑，無論謎題多難、時間多緊，你總能在對的時機說出讓大家笑出來的那句話。你的幽默不是在搗亂，而是讓隊友重新呼吸、重拾狀態，讓整場遊戲充滿歡樂。",
+    traits: [
+      { label: "核心職責", val: "維持氣氛・消除焦慮" },
+      { label: "關鍵時機", val: "卡關・高壓・有人崩潰時" },
+      { label: "最佳拍檔", val: "隊長・倉鼠" },
+      { label: "弱點提醒", val: "拿捏時機，解謎時記得認真投入" }
+    ],
+    tips: ["🌰 感覺到全隊低氣壓時，適時用幽默化解緊張","😄 鼓勵隊友、給予正向回應，讓大家相信能過關","🎭 控制玩笑頻率，高壓衝刺時把舞台讓給隊長和智囊"]
   }
 };
 
 const secondaryDesc = {
-  diplomat: "你同時帶有外交官特質——當全隊卡關太久，你不會死撐，會適時出面溝通取得提示。",
+  hamster: "你同時帶有倉鼠特質——面對驚嚇你反應超大，但每一聲尖叫都讓全隊笑到不行，是意外的氣氛擔當。",
+  joker: "你同時帶有開心果特質——你的幽默感在隊伍最緊繃的時刻發揮奇效，是全隊的隱藏解壓神器。",
   scout: "你同時帶有搜索手傾向——行動中你不忘廣撒注意力，常意外挖到隊友忽略的道具。",
   leader: "你同時帶有隊長傾向——即便不是主導者，你也會在混亂時不自覺地出來整合現況。",
   brain: "你同時帶有智囊傾向——解謎時你常有跳脫框架的靈感，是破僵局的關鍵助力。",
@@ -368,7 +397,7 @@ const secondaryDesc = {
 let page = "intro", current = 0, answers = [];
 
 function getScores() {
-  const s = { leader:0, tank:0, brain:0, scout:0, diplomat:0 };
+  const s = { leader:0, tank:0, brain:0, scout:0, hamster:0, joker:0 };
   answers.forEach(r => { if (s[r] !== undefined) s[r]++; });
   return s;
 }
@@ -390,7 +419,8 @@ function renderIntro() {
         <span class="chip" style="background:#fde8e0;color:#993C1D">🛡 坦克</span>
         <span class="chip" style="background:#e6f5d0;color:#3B6D11">🧠 智囊</span>
         <span class="chip" style="background:#fef0d0;color:#633806">🦅 鷹眼</span>
-        <span class="chip" style="background:#eeedfe;color:#3C3489">📡 外交官</span>
+        <span class="chip" style="background:#fde8f5;color:#8C2563">🐹 倉鼠</span>
+        <span class="chip" style="background:#fff8e0;color:#7A5800">🌰 開心果</span>
       </div>
       <button class="btn primary" onclick="startQuiz()" style="padding:13px 44px;font-size:15px;border-radius:12px;">開始測驗 →</button>
     </div>`;
@@ -423,14 +453,15 @@ function renderResult() {
     {label:'坦克', key:'tank', color:'#D85A30'},
     {label:'智囊', key:'brain', color:'#639922'},
     {label:'鷹眼', key:'scout', color:'#BA7517'},
-    {label:'外交官', key:'diplomat', color:'#7F77DD'}
+    {label:'倉鼠', key:'hamster', color:'#C9509A'},
+    {label:'開心果', key:'joker', color:'#E0A800'}
   ];
   return `
     <span class="role-badge" style="background:${role.badge.bg};color:${role.badge.color}">${role.badge.text}</span>
     <div class="role-title">${role.name}</div>
     <div class="role-desc">${role.desc}</div>
 
-    <div class="section-title">五種角色傾向分佈</div>
+    <div class="section-title">六種角色傾向分佈</div>
     <div class="bar-group">
       ${bars.map(b => `<div class="bar-row">
         <div class="bar-name">${b.label}</div>

@@ -166,9 +166,9 @@ const questions = [
     q: "你的夥伴發現了密道，但需要一個人先進去探查，你會怎麼反應？",
     opts: [
       { text: "沒問題，我來。（已經走進去了）", role: "tank" },
-      { text: "等一下，我想想要讓誰進去會比較適合", role: "leader" },
-      { text: "我會在入口附近負責接應，搜集周圍線索", role: "scout" },
-      { text: "你去吧，我在外面分析它和其他線索的關聯", role: "brain" },
+      { text: "等一下，我想想要讓誰進去會比較好", role: "leader" },
+      { text: "我會在入口附近負責搜集周圍線索", role: "scout" },
+      { text: "你去吧，我先來分析它和其他線索的關聯", role: "brain" },
       { text: "我可以進去！……但能不能有人陪我？", role: "hamster" }
     ]
   },
@@ -215,11 +215,11 @@ const questions = [
   {
     q: "恐怖主題密室裡，NPC（演員）突然靠近你們，你會？",
     opts: [
-      { text: "先穩住大家：「別慌，繼續解謎！」", role: "leader" },
+      { text: "跟隊友說：「別怕，跟著我！」", role: "leader" },
       { text: "主動吸引注意力，幫隊友爭取時間", role: "tank" },
       { text: "趁亂觀察附近有沒有新的線索或道具", role: "scout" },
       { text: "發出全場最高分貝尖叫，意外成為氣氛擔當", role: "hamster" },
-      { text: "一邊尖叫一邊笑著說：「剛剛那聲不是我啦！」", role: "joker" }
+      { text: "一邊尖叫一邊笑著加入NPC的行列", role: "joker" }
     ]
   },
   {
@@ -237,7 +237,7 @@ const questions = [
     opts: [
       { text: "別急，答案一定藏在線索裡，再想想看", role: "brain" },
       { text: "先把沒仔細搜過的地方再翻一遍", role: "scout" },
-      { text: "先看剩下多少時間，再決定要不要換策略", role: "leader" },
+      { text: "先看剩下多少時間，再決定要不要求救", role: "leader" },
       { text: "講個幹話打破沉默，讓大家重新開機", role: "joker" },
       { text: "默默開始打算等等出去要吃什麼安慰自己", role: "hamster" }
     ]
